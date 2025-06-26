@@ -7,7 +7,7 @@ const hbs = require('hbs');
 //use bodyParser middleware
 const bodyParser = require('body-parser');
 //use mysql database
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const app = express();
 
 
@@ -25,7 +25,7 @@ const conn = mysql.createConnection({
 conn.connect((err) => {
   if (err) throw err;
   console.log('Mysql Connected...');
-  
+
   const createDatabase = `CREATE DATABASE IF NOT EXISTS \`${process.env.DB_DATABASE}\`;`;
   conn.query(createDatabase, (err, result) => {
     if (err) throw err;
